@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\order;
+use App\Models\modelDefault;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class orderController extends Controller
 {
@@ -13,7 +15,6 @@ class orderController extends Controller
     {
         $orders = order::all();
         return $orders;
-        //'initialDate','finalDate','finalDate','quantity','goodUnits'
     }
 
     public function store(Request $request)
@@ -24,7 +25,7 @@ class orderController extends Controller
 
     public function show($id)
     {
-        $order = order::find($id);
+        $order = order::with('modelDefault')->where('id', $id)->first();
         return $order;
     }
 

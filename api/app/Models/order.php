@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class order extends Model
 {
     use HasFactory;
@@ -18,7 +17,7 @@ class order extends Model
     protected $fillable =['initialDate','finalDate','finalDate','quantity','goodUnits', 'scrap'];
     public function modelDefault()
     {
-        return $this->hasOne('App\modelDefault'); //Search order_id
+        return $this->hasOne(modelDefault::class, 'id'); //Search order_id
     }
 
 }

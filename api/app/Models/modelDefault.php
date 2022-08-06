@@ -16,6 +16,6 @@ class modelDefault extends Model
     protected $fillable = ['name','description','typeOfProduct'];
 
     public function order(){
-        return $this->belongsTo('App\order');
+        return $this->hasOne(order::class, 'ordersID');
     }
 }
