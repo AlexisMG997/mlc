@@ -25,13 +25,23 @@ class orderController extends Controller
 
     public function show($id)
     {
-        $order = order::with('modelDefault')->where('id', $id)->first();
+        $order = order::with('modelDefault')->where('id', $id)->get();
         return $order;
+
+        $model = order::find($id)->modelDefault;
+        return $model;
+
     }
 
     public function update(Request $request, $id)
     {
-        
+        $order = order::findOrFail($request->id);
+
+        $order->quantity = $request->quantity;
+        $order->goodUnits = $request->goodUnits;
+        $order->scrap = $request->scrap;
+        $order->save();
+        return $order;
     }
 
     public function destroy($id)

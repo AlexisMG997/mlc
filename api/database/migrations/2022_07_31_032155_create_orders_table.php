@@ -21,7 +21,9 @@ return new class extends Migration
             $table->integer("goodUnits")->nullable();
             $table->integer("scrap")->nullable();
         });
+
     }
+    
 
     /**
      * Reverse the migrations.

@@ -16,8 +16,12 @@ return new class extends Migration
         Schema::create('instructions', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name',20);
+            $table->string('tittle',20);
             $table->string('description',500);
+
+            $table->unsignedInteger('station_id');
+
+            $table->foreign('station_id')->references('id')->on('stations');
         });
     }
 

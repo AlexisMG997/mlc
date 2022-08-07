@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class order extends Model
+class station extends Model
 {
     use HasFactory;
     
-    protected $table = 'orders';
+    protected $table = 'stations';
 
     protected $primaryKey = 'id';
 
     //A model has an order
-    protected $fillable =['quantity','goodUnits', 'scrap'];
-    public function modelDefault()
-    {
-        return $this->hasOne(modelDefault::class, 'ordersId'); 
-    }
 
+    public function instruction()
+    {
+        return $this->hasMany(instruction::class, 'station_id'); //Search order_id
+    }
 }
