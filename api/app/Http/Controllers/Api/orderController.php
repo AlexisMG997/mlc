@@ -36,10 +36,10 @@ class orderController extends Controller
     public function update(Request $request, $id)
     {
         $order = order::findOrFail($request->id);
-
         $order->quantity = $request->quantity;
         $order->goodUnits = $request->goodUnits;
         $order->scrap = $request->scrap;
+        
         $order->save();
         return $order;
     }

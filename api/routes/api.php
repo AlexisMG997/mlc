@@ -12,7 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(orderController::class)->group(function () {
     Route::get('/order', 'index');
     Route::get('/order/{id}', 'show');
-    Route::put('/order/update/{id}', 'update');
+    Route::put('/order/{id}', 'update');
 });
 
 Route::controller(stationController::class)->group(function () {

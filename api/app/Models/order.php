@@ -14,7 +14,8 @@ class order extends Model
     protected $primaryKey = 'id';
 
     //A model has an order
-    protected $fillable =['quantity','goodUnits', 'scrap'];
+    protected $fillable = ['quantity', 'goodUnits', 'scrap'];
+    public $timestamps = false;
     public function modelDefault()
     {
         return $this->hasOne(modelDefault::class, 'ordersId'); 
