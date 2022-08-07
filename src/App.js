@@ -2,10 +2,10 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Paso0 from "./pages/paso0/Paso0";
 import Paso1 from "./pages/paso1/Paso1";
 import Paso2 from "./pages/paso2/Paso2";
+import Paso3 from "./pages/paso3/Paso3";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-
   return (
     <div className="app">
       <BrowserRouter>
@@ -15,14 +15,9 @@ function App() {
 
             <Route path="produccion">
               <Route index element={<Paso0 />} />
-              <Route
-                path="paso1"
-                element={<Paso1 />}
-              />
-              <Route
-                path="paso2"
-                element={<Paso2 />}
-              />
+              <Route path="paso1" element={<Paso1 />} />
+              <Route path="paso2" element={<Paso2 />} />
+              <Route path="paso3" element={<Paso3 />} />
             </Route>
           </Route>
         </Routes>

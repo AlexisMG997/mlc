@@ -27,7 +27,7 @@ const Paso1 = () => {
               los pasos que dicta el procedimiento de limpieza.
             </div>
             <div className="link-position">
-              <Link to="/produccion/paso3" className="link position">
+              <Link to="/produccion/paso2" className="link position">
                 SIGUIENTE
               </Link>
             </div>
