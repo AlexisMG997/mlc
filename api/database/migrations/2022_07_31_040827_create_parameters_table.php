@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('parameters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',20);
-            $table->integer('value');
-            $table->unsignedInteger('typeOfMeasureId');
+            $table->string('parameterName',20);
+            $table->string('unitOfMeasure',20);
+            $table->integer('valueMaximum');
+            $table->integer('valueMinimum');
 
-            $table->foreign('typeOfMeasureId')->references('id')->on('typeof_measures');
+            $table->unsignedInteger('equipment_id');
+            $table->foreign('equipment_id')->references('id')->on('equipment');
+
         });
     }
 

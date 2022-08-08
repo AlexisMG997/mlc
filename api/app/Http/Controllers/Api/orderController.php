@@ -17,9 +17,26 @@ class orderController extends Controller
         return $orders;
     }
 
-    public function store(Request $request)
+    public function scrapTotal()
     {
-        
+        $scrap = DB::table("orders")
+            ->select(DB::raw("SUM(scrap) as scrapTotal"))
+            ->get();
+        return $scrap;
+    }
+    public function GoodUnitsTotal()
+    {
+        $GoodUnits = DB::table("orders")
+            ->select(DB::raw("SUM(goodUnits) as goodUnitsTotal"))
+            ->get();
+        return $GoodUnits;
+    }
+    public function quantityTotal()
+    {
+        $quantity = DB::table("orders")
+            ->select(DB::raw("SUM(quantity) as quantityTotal"))
+            ->get();
+        return $quantity;
     }
 
 
@@ -27,15 +44,20 @@ class orderController extends Controller
     {
         $order = order::with('modelDefault')->where('id', $id)->get();
         return $order;
+
+        $model = order::find($id)->modelDefault;
+        return $model;
+
     }
 
     public function update(Request $request, $id)
     {
+        $order = order::findOrFail($request->id);
+        $order->goodUnits = $request->goodUnits;
+        $order->scrap = $request->scrap;
         
+        $order->save();
+        return $order;
     }
 
-    public function destroy($id)
-    {
-        
-    }
 }

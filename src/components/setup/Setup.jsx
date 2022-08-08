@@ -1,13 +1,19 @@
 import "./setup.scss";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Setup = () => {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const { data } = await axios.get("http://localhost:8000/api/equipment/1");
+    setData(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const machines = [
     {
       idEquipment: 14551,
@@ -45,18 +51,20 @@ const Setup = () => {
   ];
   return (
     <>
-      {machines.map((machine, index) => (
+      <div>{JSON.stringify(data)}</div>
+      {data.map((dat, index) => (
         <div className="machine" key={index}>
           <div className="machineHeader">
-            <h2>{machine.equipmentMachine}</h2>
+            <h2>{dat.equipmentMachine}</h2>
           </div>
-          {machine.Parameters.map((parameter, index) => {
+          {dat.parameters.map((parameter, index) => {
             return (
               <div className="parameterTitle" key={index}>
                 <h1>{parameter.parameterName}</h1>
                 <div className="parameter">
                   <p>
-                    Range: {parameter.valueMinimum} - {parameter.valueMaximum}
+                    Range: {parameter.valueMinimum} - {parameter.valueMaximum}{" "}
+                    {parameter.unitOfMeasure}
                     <div className="controls">
                       <input type="text" className="parameter" />
                       <button className="verify">Verificar</button>

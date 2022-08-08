@@ -1,28 +1,27 @@
-import "./paso3.scss";
+import "./paso4.scss";
 import Navbar from "../../components/navbar/Navbar";
-import Setup from "../../components/setup/Setup";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Link } from "react-router-dom";
+import Process from "../../components/process/Process";
 
-const Paso3 = () => {
+const Paso4 = () => {
   return (
     <div className="paso2">
       <div className="paso2Container">
         <Navbar />
         <div className="top">
-          <h1>Set Up - Equipos</h1>
+          <h1>Process</h1>
           <CircleIcon className="dotComplete2" />
           <CircleIcon className="dotComplete" />
+          <CircleIcon className="dotComplete" />
           <CircleIcon className="dotProgress2" />
-          <CircleIcon className="dot" />
           <CircleIcon className="dot" />
         </div>
         <div className="bottom">
           <div>
-            <h1 className="title">Set Up - Equipment/Tooling</h1>
-            <Setup />
+            <Process />
             <div className="link-position">
-              <Link to="/produccion/paso4" className="link position">
+              <Link to="/produccion/paso3" className="link position">
                 SIGUIENTE
               </Link>
             </div>
@@ -33,4 +32,4 @@ const Paso3 = () => {
   );
 };
 
-export default Paso3;
+export default Paso4;
