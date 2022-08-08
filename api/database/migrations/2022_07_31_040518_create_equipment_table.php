@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->Integer("equipmentCode");
-            $table->string("equipmentName",20);
-            $table->string("equipmentDescription",100);
+            $table->string("equipmentMachine",30);
 
         });
     }

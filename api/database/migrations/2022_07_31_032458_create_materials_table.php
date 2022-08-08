@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_material');
             $table->string('name',40);
-            $table->string('description',100);
-
-            $table->unsignedInteger('typeOfMeasureId');
-
-            $table->foreign('typeOfMeasureId')->references('id')->on('typeof_measures');
+            $table->integer('pieces');
         });
     }
 
