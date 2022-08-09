@@ -3,6 +3,7 @@ import "./process.scss";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Process = () => {
   const [data, setData] = useState([]);
@@ -28,10 +29,61 @@ const Process = () => {
 
   const [scrapPieces, setScrapPieces] = useState(0);
 
+  function incrementPieces() {
+    if (
+      parseInt(goodPieces) + parseInt(scrapPieces) + 1 ==
+      data.map((dat) => dat.quantity)
+    ) {
+      console.log(goodPieces);
+      setGoodPieces(parseInt(goodPieces) + 1);
+      var buttonScrap = document.getElementById("incrementScrap");
+      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      buttonScrap.setAttribute("disabled", "true");
+      buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.setAttribute("disabled", "true");
+      buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+    } else {
+      setGoodPieces(parseInt(goodPieces) + 1);
+    }
+  }
+
+  function incrementScrap() {
+    if (
+      parseInt(goodPieces) + parseInt(scrapPieces) + 1 ==
+      data.map((dat) => parseInt(dat.quantity))
+    ) {
+      console.log(scrapPieces);
+      setScrapPieces(parseInt(scrapPieces) + 1);
+      var buttonScrap = document.getElementById("incrementScrap");
+      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      buttonScrap.setAttribute("disabled", "true");
+      buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.setAttribute("disabled", "true");
+      buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+    } else {
+      console.log(data.map((dat) => parseInt(dat.quantity)));
+      console.log(parseInt(goodPieces) + parseInt(scrapPieces));
+      setScrapPieces(parseInt(scrapPieces) + 1);
+    }
+  }
+  function updateQuantities() {
+    axios
+      .put("http://localhost:8000/api/order/1?", {
+        goodUnits: parseInt(goodPieces),
+
+        scrap: parseInt(scrapPieces),
+      })
+      .then((response) => {
+        setData(response.data);
+      });
+    document.getElementById("paso4Link").setAttribute("disabled", true);
+    // window.location.href = "/produccion/paso5";
+  }
+
   function blockFunction() {
     if (
       parseInt(goodPieces) + parseInt(scrapPieces) ===
-      data.map((dat) => dat.quantity)
+      data.map((dat) => parseInt(dat.quantity))
     ) {
       console.log(goodPieces);
       var buttonScrap = document.getElementById("incrementScrap");
@@ -55,10 +107,9 @@ const Process = () => {
             <button
               id="incrementGoodPiece"
               className="incrementGoodPiece"
-              onClick={() => setGoodPieces(parseInt(goodPieces) + 1)}
-              {...blockFunction()}
+              onClick={incrementPieces}
             >
-              <CheckIcon fontSize="large" />
+              <CheckIcon disabled="true" fontSize="large" />
             </button>
             <p className="operationPiece">{goodPieces}</p>
           </div>
@@ -71,9 +122,9 @@ const Process = () => {
             <button
               id="incrementScrap"
               className="incrementScrap"
-              onClick={() => setScrapPieces(parseInt(scrapPieces) + 1)}
+              onClick={incrementScrap}
             >
-              <CloseIcon fontSize="large" />
+              <CloseIcon disabled="true" fontSize="large" />
             </button>
             <p className="operationPiece">{scrapPieces}</p>
           </div>
@@ -85,6 +136,9 @@ const Process = () => {
               return dat.quantity;
             })}
           </p>
+          <button onClick={updateQuantities}>
+            <a href="/produccion/paso5">a</a>
+          </button>
         </div>
       </div>
     </>

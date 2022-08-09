@@ -31,7 +31,10 @@ const Resume = () => {
               <h2>Bad Pieces</h2>
             </div>
             <div className="scrapQuantity">
-              <p>{dat.scrap}</p>
+              <p>
+                {dat.scrap}
+                {console.log(dat.scrap)}
+              </p>
             </div>
           </div>
           <div className="resumeInitialPieces">
