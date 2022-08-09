@@ -39,7 +39,7 @@ const Resume = () => {
               <h2>Initial Pieces</h2>
             </div>
             <div className="initialPiecesQuantity">
-              <p className="asd">{dat.quantity}</p>
+              <p>{dat.quantity}</p>
             </div>
           </div>
           <div className="resumeGoodPieces">

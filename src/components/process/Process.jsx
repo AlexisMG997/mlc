@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./process.scss";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
+
 const Process = () => {
-  const endPointOrder = [
-    {
-      initialQuantity: 10,
-      goodPieces: 0,
-      scrapPieces: 1,
-    },
-  ];
+  const [data, setData] = useState([]);
 
-  const [goodPiece, setGoodPiece] = useState(
-    endPointOrder.map((endPointGoodPiece) => {
-      return endPointGoodPiece.goodPieces;
-    })
-  );
-  const [scrapPiece, setScrapPiece] = useState(
-    endPointOrder.map((endPointScrapPiece) => {
-      return endPointScrapPiece.scrapPieces;
-    })
-  );
+  const getData = async () => {
+    const { data } = await axios.get("http://localhost:8000/api/order/1");
+    setData(data);
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // const endPointOrder = [
+  //   {
+  //     initialQuantity: 10,
+  //     goodPieces: 0,
+  //     scrapPieces: 1,
+  //   },
+  // ];
+
+  const [goodPieces, setGoodPieces] = useState(0);
+
+  const [scrapPieces, setScrapPieces] = useState(0);
+
+  function blockFunction() {
+    if (
+      parseInt(goodPieces) + parseInt(scrapPieces) ===
+      data.map((dat) => dat.quantity)
+    ) {
+      console.log(goodPieces);
+      var buttonScrap = document.getElementById("incrementScrap");
+      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      buttonScrap.setAttribute("disabled", "true");
+      buttonGoodPiece.setAttribute("disabled", "true");
+    }
+  }
   // const [goodPiece, setGoodPiece] = useState(1);
   // const [scrapPiece, setScrapPiece] = useState(0);
 
   return (
     <>
+      {/* <div>{JSON.stringify(data)}</div> */}
       <div className="container">
         <div className="processIncrement">
           <div className="operationTitle">
@@ -34,12 +53,14 @@ const Process = () => {
           </div>
           <div className="incrementOperation">
             <button
+              id="incrementGoodPiece"
               className="incrementGoodPiece"
-              onClick={() => setGoodPiece(parseInt(goodPiece) + 3)}
+              onClick={() => setGoodPieces(parseInt(goodPieces) + 1)}
+              {...blockFunction()}
             >
-              <CheckIcon />
+              <CheckIcon fontSize="large" />
             </button>
-            <p className="operationPiece">{goodPiece}</p>
+            <p className="operationPiece">{goodPieces}</p>
           </div>
         </div>
         <div className="processDecrement">
@@ -48,19 +69,20 @@ const Process = () => {
           </div>
           <div className="incrementOperation">
             <button
+              id="incrementScrap"
               className="incrementScrap"
-              onClick={() => setScrapPiece(parseInt(scrapPiece) + 1)}
+              onClick={() => setScrapPieces(parseInt(scrapPieces) + 1)}
             >
-              <CloseIcon />
+              <CloseIcon fontSize="large" />
             </button>
-            <p className="operationPiece">{scrapPiece}</p>
+            <p className="operationPiece">{scrapPieces}</p>
           </div>
         </div>
         <div className="processedPiece">
           <p>
-            {parseInt(goodPiece) + parseInt(scrapPiece)} -
-            {endPointOrder.map((endPointOrd) => {
-              return endPointOrd.initialQuantity;
+            {parseInt(goodPieces) + parseInt(scrapPieces)} -
+            {data.map((dat) => {
+              return dat.quantity;
             })}
           </p>
         </div>

@@ -14,44 +14,44 @@ const Setup = () => {
     getData();
   }, []);
 
-  const machines = [
-    {
-      idEquipment: 14551,
-      equipmentMachine: "Fold Machine",
-      Parameters: [
-        {
-          idParameter: 1,
-          parameterName: "Time",
-          unitOfMesure: "sec",
-          valueMaximum: 200,
-          valueMinimum: 150,
-        },
-        {
-          idParameter: 2,
-          parameterName: "Velocity",
-          unitOfMesure: "mm/sec",
-          valueMaximum: 50,
-          valueMinimum: 25,
-        },
-      ],
-    },
-    {
-      idEquipment: 14552,
-      equipmentMachine: "Temperature controller",
-      Parameters: [
-        {
-          idParameter: 1,
-          parameterName: "Heater",
-          unitOfMesure: "Fahrenheit",
-          valueMaximum: 40,
-          valueMinimum: 15,
-        },
-      ],
-    },
-  ];
+  // const machines = [
+  //   {
+  //     idEquipment: 14551,
+  //     equipmentMachine: "Fold Machine",
+  //     Parameters: [
+  //       {
+  //         idParameter: 1,
+  //         parameterName: "Time",
+  //         unitOfMesure: "sec",
+  //         valueMaximum: 200,
+  //         valueMinimum: 150,
+  //       },
+  //       {
+  //         idParameter: 2,
+  //         parameterName: "Velocity",
+  //         unitOfMesure: "mm/sec",
+  //         valueMaximum: 50,
+  //         valueMinimum: 25,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     idEquipment: 14552,
+  //     equipmentMachine: "Temperature controller",
+  //     Parameters: [
+  //       {
+  //         idParameter: 1,
+  //         parameterName: "Heater",
+  //         unitOfMesure: "Fahrenheit",
+  //         valueMaximum: 40,
+  //         valueMinimum: 15,
+  //       },
+  //     ],
+  //   },
+  // ];
   return (
     <>
-      <div>{JSON.stringify(data)}</div>
+      {/* <div>{JSON.stringify(data)}</div> */}
       {data.map((dat, index) => (
         <div className="machine" key={index}>
           <div className="machineHeader">
@@ -66,7 +66,11 @@ const Setup = () => {
                     Range: {parameter.valueMinimum} - {parameter.valueMaximum}{" "}
                     {parameter.unitOfMeasure}
                     <div className="controls">
-                      <input type="text" className="parameter" />
+                      <input
+                        type="text"
+                        className="parameter"
+                        required="true"
+                      />
                       <button className="verify">Verificar</button>
                     </div>
                   </p>

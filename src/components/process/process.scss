@@ -47,3 +47,67 @@
     padding-bottom: 10px;
   }
 }
+.processIncrement {
+  display: flex;
+  margin-right: 40px;
+  align-items: center;
+
+  button {
+    height: 80px;
+    width: 150px;
+    background-color: #2bba00;
+    cursor: pointer;
+    color: white;
+  }
+  button:hover {
+    background-color: #196b00;
+  }
+
+  p {
+    font-size: 40pt;
+  }
+}
+
+.processDecrement {
+  display: flex;
+  margin-right: 40px;
+  align-items: center;
+
+  button {
+    height: 80px;
+    width: 150px;
+    background-color: #ff0909;
+    cursor: pointer;
+    color: white;
+  }
+
+  button:hover {
+    background-color: #c60000;
+  }
+
+  p {
+    font-size: 40pt;
+  }
+}
+
+.processedPiece {
+  display: flex;
+  align-items: center;
+  margin-left: 250px;
+
+  p {
+    font-size: 40pt;
+  }
+}
+.incrementOperation {
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+
+  .operationPiece {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+  }
+}
