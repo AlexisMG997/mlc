@@ -29,6 +29,19 @@ const Process = () => {
 
   const [scrapPieces, setScrapPieces] = useState(0);
 
+  function init() {
+    console.log(goodPieces);
+    console.log(scrapPieces);
+    axios
+      .put("http://localhost:8000/api/order/1?", {
+        goodUnits: 0,
+        scrap: 0,
+      })
+      .then((response) => {
+        setData(response.data);
+      });
+  }
+
   function incrementPieces() {
     if (
       parseInt(goodPieces) + parseInt(scrapPieces) + 1 ==
@@ -69,14 +82,10 @@ const Process = () => {
       buttonGoodPiece.style.pointerEvents = "none";
       buttonPut.style.visibility = "visible";
     } else {
-      console.log(data.map((dat) => parseInt(dat.quantity)));
-      console.log(parseInt(goodPieces) + parseInt(scrapPieces));
       setScrapPieces(parseInt(scrapPieces) + 1);
     }
   }
   function updateQuantities() {
-    console.log(goodPieces);
-    console.log(scrapPieces);
     axios
       .put("http://localhost:8000/api/order/1?", {
         goodUnits: goodPieces,
@@ -108,6 +117,7 @@ const Process = () => {
   return (
     <>
       {/* <div>{JSON.stringify(data)}</div> */}
+      {/* {init} */}
       <div className="container">
         <div className="processIncrement">
           <div className="operationTitle">

@@ -20,6 +20,11 @@ const Paso4 = () => {
         <div className="bottom">
           <div>
             <Process />
+            <div id="linkPosition" className="link-position">
+              <Link to="/produccion/paso4" className="link position">
+                SIGUIENTE
+              </Link>
+            </div>
           </div>
         </div>
       </div>
