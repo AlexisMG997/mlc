@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\orderController;
 use App\Http\Controllers\Api\stationController;
 use App\Http\Controllers\Api\materialController;
 use App\Http\Controllers\Api\equipmentController;
+use App\Http\Controllers\api\orderLogController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -33,5 +34,10 @@ Route::controller(materialController::class)->group(function () {
 Route::controller(equipmentController::class)->group(function () {
     Route::get('/equipment/{id}', 'show');
 });
+
+Route::controller(orderLogController::class)->group(function () {
+    Route::get('/orderLogs', 'index');
+});
+
 
 
