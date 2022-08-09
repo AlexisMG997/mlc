@@ -1,52 +1,3 @@
-.machine {
-  border: 2px solid black;
-  border-radius: 10px;
-  padding-right: 5px;
-  margin: 20px 0 40px 0;
-  width: 600px;
-
-  .machineHeader {
-    display: flex;
-    flex: content;
-    border-radius: 10px 10px 0 0;
-    background-color: #14133a;
-    color: #ffffff;
-    width: 100%;
-    padding-left: 5px;
-  }
-
-  .verify {
-    margin-left: 15px;
-    box-shadow: inset 0px 1px 0px 0px #9fb4f2;
-    background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-    background-color: #7892c2;
-    border-radius: 3px;
-    border: 1px solid #4e6096;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 13px;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #283966;
-  }
-  .verify:hover {
-    background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-    background-color: #476e9e;
-  }
-  .verify:active {
-    position: relative;
-    top: 1px;
-  }
-
-  .controls {
-    display: flex;
-    justify-content: end;
-    margin-top: 20px;
-    padding-bottom: 10px;
-  }
-}
 .processIncrement {
   display: flex;
   margin-right: 40px;
@@ -92,12 +43,21 @@
 
 .processedPiece {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-left: 250px;
 
   p {
     font-size: 40pt;
+    width: fit-content;
   }
+}
+
+.processDecrement {
+  display: flex;
+
+  margin-left: 50px;
 }
 .incrementOperation {
   display: flex;
@@ -110,4 +70,20 @@
     align-items: center;
     text-align: center;
   }
+
+  .operationTitle {
+    margin-left: 50px;
+  }
+}
+
+.piecesPut {
+  visibility: hidden;
+  text-decoration: none;
+  color: green;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }

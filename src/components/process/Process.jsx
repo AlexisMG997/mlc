@@ -38,10 +38,14 @@ const Process = () => {
       setGoodPieces(parseInt(goodPieces) + 1);
       var buttonScrap = document.getElementById("incrementScrap");
       var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      var buttonPut = document.getElementById("piecesPut");
       buttonScrap.setAttribute("disabled", "true");
       buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonScrap.style.pointerEvents = "none";
       buttonGoodPiece.setAttribute("disabled", "true");
       buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.style.pointerEvents = "none";
+      buttonPut.style.visibility = "visible";
     } else {
       setGoodPieces(parseInt(goodPieces) + 1);
     }
@@ -56,10 +60,14 @@ const Process = () => {
       setScrapPieces(parseInt(scrapPieces) + 1);
       var buttonScrap = document.getElementById("incrementScrap");
       var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      var buttonPut = document.getElementById("piecesPut");
       buttonScrap.setAttribute("disabled", "true");
       buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonScrap.style.pointerEvents = "none";
       buttonGoodPiece.setAttribute("disabled", "true");
       buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.style.pointerEvents = "none";
+      buttonPut.style.visibility = "visible";
     } else {
       console.log(data.map((dat) => parseInt(dat.quantity)));
       console.log(parseInt(goodPieces) + parseInt(scrapPieces));
@@ -76,22 +84,23 @@ const Process = () => {
       .then((response) => {
         setData(response.data);
       });
-    document.getElementById("paso4Link").setAttribute("disabled", true);
-    // window.location.href = "/produccion/paso5";
+    window.location.href = "/produccion/paso5";
   }
 
-  function blockFunction() {
-    if (
-      parseInt(goodPieces) + parseInt(scrapPieces) ===
-      data.map((dat) => parseInt(dat.quantity))
-    ) {
-      console.log(goodPieces);
-      var buttonScrap = document.getElementById("incrementScrap");
-      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
-      buttonScrap.setAttribute("disabled", "true");
-      buttonGoodPiece.setAttribute("disabled", "true");
-    }
-  }
+  // function blockFunction() {
+  //   if (
+  //     parseInt(goodPieces) + parseInt(scrapPieces) ===
+  //     data.map((dat) => parseInt(dat.quantity))
+  //   ) {
+  //     console.log(goodPieces);
+  //     var buttonScrap = document.getElementById("incrementScrap");
+  //     var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+  //     var buttonPut = document.getElementById("piecesPut");
+  //     buttonScrap.setAttribute("disabled", "true");
+  //     buttonGoodPiece.setAttribute("disabled", "true");
+
+  //   }
+  // }
   // const [goodPiece, setGoodPiece] = useState(1);
   // const [scrapPiece, setScrapPiece] = useState(0);
 
@@ -130,14 +139,21 @@ const Process = () => {
           </div>
         </div>
         <div className="processedPiece">
+          <>
+            <h2>Piezas Producidas</h2>
+          </>
           <p>
             {parseInt(goodPieces) + parseInt(scrapPieces)} -
             {data.map((dat) => {
               return dat.quantity;
             })}
           </p>
-          <button onClick={updateQuantities}>
-            <a href="/produccion/paso5">a</a>
+          <button
+            id="piecesPut"
+            className="piecesPut"
+            onClick={updateQuantities}
+          >
+            SIGUIENTE
           </button>
         </div>
       </div>
