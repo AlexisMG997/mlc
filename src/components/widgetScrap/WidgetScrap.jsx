@@ -33,7 +33,6 @@ class Widget extends Component {
                   })
                 }
               </span>
-              <span className="link">VER TODOS LOS SCRAPS</span>
             </div>
             <div className="right">
 

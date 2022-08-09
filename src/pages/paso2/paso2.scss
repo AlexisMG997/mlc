@@ -120,14 +120,8 @@
 	top:1px;
 }
 
-.link{
-  text-decoration: none;
-  color: green;
-  font-size: 16px;
-  font-weight: 400;
-  border: 1px solid green;
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 50px;
+#linker{
+  display: none;
+  width: fit-content;
+  margin-top: 25px;
 }

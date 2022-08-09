@@ -35,7 +35,6 @@ class Widget extends Component {
 
                 }
               </span>
-              <span className="link">VER TODAS LAS PIEZAS</span>
             </div>
             <div className="right">
 

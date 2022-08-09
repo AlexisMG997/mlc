@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from 'axios';
 import { Component } from "react";
-import { Link } from "react-router-dom";
 
 const url = 'http://127.0.0.1:8000/api/material';
 //<span className={`status ${row.status}`} id={`${row.status}`}>{row.status}</span>
@@ -67,7 +66,7 @@ class List extends Component {
               <TableCell className="tableCell">{row.product}</TableCell>
               <TableCell className="tableCell">{row.quantity}</TableCell>
               <TableCell className="tableCell">
-                <input value={row.id} type="checkbox" />
+                <span id={row.id} className={'status ' + row.status + ' ' + row.id}> {row.status} </span>
               </TableCell>
             </TableRow>
           ))}
