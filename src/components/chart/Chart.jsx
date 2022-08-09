@@ -44,7 +44,7 @@ class Chart extends Component {
           const container = {};
         
           container.name = 'Orden #' + item.id;
-          container.pieces = item.goodUnits
+          container.Piezas = item.goodUnits
         
           return container;
         })}
@@ -56,7 +56,7 @@ class Chart extends Component {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="pieces" fill="#8884d8" background={{ fill: "#eee" }} />
+        <Bar dataKey="Piezas" fill="#8884d8" background={{ fill: "#eee" }} />
       </BarChart>
     </ResponsiveContainer>
     </div>

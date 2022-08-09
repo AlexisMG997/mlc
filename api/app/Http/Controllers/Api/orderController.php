@@ -47,7 +47,6 @@ class orderController extends Controller
 
         $model = order::find($id)->modelDefault;
         return $model;
-
     }
 
     public function update(Request $request, $id)
@@ -57,7 +56,15 @@ class orderController extends Controller
         $order->scrap = $request->scrap;
         
         $order->save();
+        $orderLog = [
+            'date' => now(),
+            'origin' => 'local.order',
+            'message' => 'Se ha actualizado la orden número',
+            'orderNum' => $id
+        ];
+        DB::table('orderLogs')->insert($orderLog);
         return $order;
+        
     }
 
 }

@@ -26,35 +26,21 @@ const Sidebar = () => {
             <span>Dashboard</span>
             </Link>
           </li>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Estado</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notificación</span>
-          </li>
+          
           <p className="title">SERVICE</p>
+          <Link to="/logs" style={{ textDecoration: "none" }}>
           <li>
             <PsychologyOutlinedIcon className="icon" />
             <span>Logs</span>
           </li>
+          </Link>
           <Link to="/produccion/paso1" style={{ textDecoration: "none" }}>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Producción</span>
           </li>
           </Link>
-          <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Perfil</span>
-          </li>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Cerrar Sesión</span>
-          </li>
+          
         </ul>
       </div>
     </div>

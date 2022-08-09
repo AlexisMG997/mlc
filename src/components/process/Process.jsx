@@ -75,11 +75,12 @@ const Process = () => {
     }
   }
   function updateQuantities() {
+    console.log(goodPieces);
+    console.log(scrapPieces);
     axios
       .put("http://localhost:8000/api/order/1?", {
-        goodUnits: parseInt(goodPieces),
-
-        scrap: parseInt(scrapPieces),
+        goodUnits: goodPieces,
+        scrap: scrapPieces,
       })
       .then((response) => {
         setData(response.data);
