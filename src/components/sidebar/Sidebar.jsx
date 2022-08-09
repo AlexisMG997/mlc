@@ -40,7 +40,7 @@ const Sidebar = () => {
             <PsychologyOutlinedIcon className="icon" />
             <span>Logs</span>
           </li>
-          <Link to="/produccion" style={{ textDecoration: "none" }}>
+          <Link to="/produccion/paso1" style={{ textDecoration: "none" }}>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Producción</span>

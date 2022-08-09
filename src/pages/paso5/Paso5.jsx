@@ -14,14 +14,14 @@ const Paso5 = () => {
           <CircleIcon className="dotComplete2" />
           <CircleIcon className="dotComplete" />
           <CircleIcon className="dotComplete" />
+          <CircleIcon className="dotComplete" />
           <CircleIcon className="dotProgress2" />
-          <CircleIcon className="dot" />
         </div>
         <div className="bottom">
           <div>
             <Resume />
             <div className="link-position">
-              <Link to="/produccion/paso3" className="link position">
+              <Link to="/" className="link position">
                 FINISH
               </Link>
             </div>

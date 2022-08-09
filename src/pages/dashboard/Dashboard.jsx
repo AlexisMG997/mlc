@@ -2,6 +2,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./dashboard.scss";
 import Widget from "../../components/widget/Widget";
+import WidgetScrap from "../../components/widgetScrap/WidgetScrap"; 
 import Chart from "../../components/chart/Chart";
 import ChartScrap from "../../components/chartScrap/ChartScrap";
 
@@ -11,16 +12,29 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <div className="widgets">
-          <Widget type="pieces" />
-          <Widget type="scrap" />
+        
+        <div className="dashboardContainer">
+
+          <div className="producedPieces">
+            <div className="widgets">
+              <Widget/>
+            </div>
+            <div className="charts">
+              <Chart />
+            </div>
+          </div>
+
+          <div className="scrapPieces">
+            <div className="widgets">
+            <WidgetScrap/>
+            </div>
+            <div className="charts">
+              <ChartScrap />
+            </div>
+          </div>
+
         </div>
-        <div className="charts">
-          <Chart title="Piezas producidas por estación (Hoy)" aspect={10 / 5} />
-        </div>
-        <div className="charts">
-          <ChartScrap title="Scrap por estación (Hoy)" aspect={2 / 1} />
-        </div>
+
       </div>
     </div>
   );

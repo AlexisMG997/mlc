@@ -6,28 +6,46 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axios from 'axios';
+import { Component } from "react";
+import { Link } from "react-router-dom";
 
-const List = () => {
-  const rows = [
-    {
-      id: 1143155,
-      product: "Globo Medida 3 cm",
-      quantity: 200,
-      status: "Pendiente",
-    },
-    {
-      id: 2235235,
-      product: "Pegamento Industrial",
-      quantity: 200,
-      status: "Verificado",
-    },
-    {
-      id: 2342353,
-      product: "Globo medido 3cm",
-      quantity: 200,
-      status: "Pendiente",
-    },
-  ];
+const url = 'http://127.0.0.1:8000/api/material';
+//<span className={`status ${row.status}`} id={`${row.status}`}>{row.status}</span>
+
+class List extends Component {
+
+
+  
+  state = {
+    data:[]
+  }
+  
+  getRequest = () => {
+    axios.get(url)
+    .then(response => { 
+      console.log(response); 
+      this.setState({data: response.data})
+    } )
+  }
+  
+  componentDidMount(){
+    this.getRequest();
+  }
+
+  render () {
+
+    const contain = this.state.data.map(item => {
+      const container = {};
+    
+      container.id = item.id_material;
+      container.product = item.name;
+      container.quantity = item.pieces;
+      container.status = 'Pendiente';
+    
+      return container;
+    })
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -40,13 +58,16 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+
+        
+        
+          {contain.map((row) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.product}</TableCell>
               <TableCell className="tableCell">{row.quantity}</TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
+                <input value={row.id} type="checkbox" />
               </TableCell>
             </TableRow>
           ))}
@@ -54,6 +75,7 @@ const List = () => {
       </Table>
     </TableContainer>
   );
+}
 };
 
 export default List;

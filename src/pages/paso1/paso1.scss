@@ -14,7 +14,7 @@
       display: flex;
 
       h1 {
-        color: rgba(17, 17, 17, 0.75);
+        color: rgba(17, 17, 17, 0.750);
         font-size: 20px;
       }
 
@@ -77,27 +77,31 @@
   }
 }
 
+.dots {
+  margin-left: 250px;
+}
+
 .dotComplete {
-  color: rgba(0, 128, 0, 0.75);
+  color: rgba(0, 128, 0, 0.750);
 }
 .dot {
-  color: rgba(16, 16, 16, 0.75);
+  color: rgba(16, 16, 16, 0.750);
 }
 .dotProgress {
   margin-left: 800px;
   color: rgba(189, 189, 3, 0.75);
 }
 
-.verify-step {
+.verify-step{
   margin-right: 50px;
 }
 
-.container {
+.container{
   margin-top: 15px;
   margin-bottom: 30px;
 }
 
-.link {
+.link{
   text-decoration: none;
   color: green;
   font-size: 16px;
@@ -107,3 +111,4 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
