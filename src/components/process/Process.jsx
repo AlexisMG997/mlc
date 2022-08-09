@@ -58,7 +58,7 @@ const Process = () => {
       buttonGoodPiece.setAttribute("disabled", "true");
       buttonGoodPiece.style.backgroundColor = "#d3d3d3";
       buttonGoodPiece.style.pointerEvents = "none";
-      buttonPut.style.visibility = "visible";
+      buttonPut.style.display = "inherit";
     } else {
       setGoodPieces(parseInt(goodPieces) + 1);
     }
@@ -80,23 +80,24 @@ const Process = () => {
       buttonGoodPiece.setAttribute("disabled", "true");
       buttonGoodPiece.style.backgroundColor = "#d3d3d3";
       buttonGoodPiece.style.pointerEvents = "none";
-      buttonPut.style.visibility = "visible";
+      buttonPut.style.display = "inherit";
     } else {
       setScrapPieces(parseInt(scrapPieces) + 1);
     }
   }
   function updateQuantities() {
-    axios
-      .put("http://localhost:8000/api/order/1?", {
-        goodUnits: goodPieces,
-        scrap: scrapPieces,
-      })
-      .then((response) => {
-        setData(response.data);
-      });
-    window.location.href = "/produccion/paso5";
+    axios.put("http://localhost:8000/api/order/1?", {
+      goodUnits: goodPieces,
+      scrap: scrapPieces,
+    });
+    document.getElementById("linkPosition").style.display = "flex";
+    var buttonPut = document.getElementById("piecesPut");
+    buttonPut.style.display = "none";
   }
 
+  function changeWindow() {
+    window.location.href = "/produccion/paso5";
+  }
   // function blockFunction() {
   //   if (
   //     parseInt(goodPieces) + parseInt(scrapPieces) ===
@@ -164,7 +165,7 @@ const Process = () => {
             className="piecesPut"
             onClick={updateQuantities}
           >
-            SIGUIENTE
+            Finalizar Orden
           </button>
         </div>
       </div>
