@@ -52,7 +52,7 @@ class Paso1 extends Component {
           </>
 
         <div className="dots">   
-          <CircleIcon className="dotComplete"/>
+          <CircleIcon className="dotProgress"/>
           <CircleIcon className="dot"/>
           <CircleIcon className="dot"/>
           <CircleIcon className="dot"/>

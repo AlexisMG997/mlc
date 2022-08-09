@@ -1,8 +1,6 @@
-.paso1 {
-  width: 100%;
+.paso2 {
   display: flex;
-
-  .paso1Container {
+  .paso2Container {
     flex: 6;
 
     .top,
@@ -12,9 +10,9 @@
       padding: 10px;
       margin: 20px;
       display: flex;
-
+      justify-content: center;
       h1 {
-        color: rgba(17, 17, 17, 0.750);
+        color: rgba(17, 17, 17, 0.75);
         font-size: 20px;
       }
 
@@ -77,31 +75,54 @@
   }
 }
 
-.dots {
-  margin-left: 250px;
-}
-
-.dotComplete {
-  color: rgba(0, 128, 0, 0.750);
+.dotComplete2 {
+  margin-left: 800px;
+  color: rgba(0, 128, 0, 0.75);
 }
 .dot {
-  color: rgba(16, 16, 16, 0.750);
+  color: rgba(16, 16, 16, 0.75);
 }
-.dotProgress {
-  margin-left: 800px;
+.dotProgress2 {
   color: rgba(189, 189, 3, 0.75);
 }
 
-.verify-step{
-  margin-right: 50px;
-}
-
-.container{
+.container {
+  display: flex;
+  justify-content: center;
   margin-top: 15px;
   margin-bottom: 30px;
 }
 
-.link{
+.searcher {
+  margin: 15px;
+}
+
+.verify {
+  margin-left: 15px;
+  box-shadow: inset 0px 1px 0px 0px #9fb4f2;
+  background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+  background-color: #7892c2;
+  border-radius: 3px;
+  border: 1px solid #4e6096;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+}
+.verify:hover {
+  background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+  background-color: #476e9e;
+}
+.verify:active {
+  position: relative;
+  top: 1px;
+}
+
+.link {
   text-decoration: none;
   color: green;
   font-size: 16px;
@@ -112,3 +133,8 @@
   cursor: pointer;
 }
 
+.link-position {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}

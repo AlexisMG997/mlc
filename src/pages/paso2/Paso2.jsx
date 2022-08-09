@@ -11,19 +11,26 @@ const Paso2 = () => {
   const inputRef = useRef(null);
 
   function handleClick() {
-    console.log(inputRef.current.value);
+    //console.log(inputRef.current.value);
     resulter = document.getElementById(inputRef.current.value);
-    console.log(resulter);
-    console.log('status Pendiente '+ inputRef.current.value)
+    //console.log(inputRef.current.value)
+    //console.log(inputRef.current.value);
+   /* console.log('status Pendiente '+ inputRef.current.value)*/
 
-    if (resulter = document.getElementById(inputRef.current.value)) {
+   if (inputRef.current.value.length > 8) {
+    alert('La ID debe ser menor a 7 caracteres')
+   } else {
+        if (resulter = document.getElementById(inputRef.current.value)) {
       document.getElementById(inputRef.current.value).className ='status Verificado';
       document.getElementById(inputRef.current.value).innerHTML ='Verificado';
       console.log('si existe')
       enableNextStep()
     } else {
-      alert('Error, la id del producto no existe')
+      alert('Error, la ID del producto no existe')
     }
+   }
+
+
   }
 
   function enableNextStep() {
@@ -51,7 +58,8 @@ const Paso2 = () => {
           <div>
             <h1 className="title">Revisión de materiales</h1>
             <div className="searcher">
-              Material: <input ref={inputRef} type='text' placeholder="0123456789" className='searcher'></input>
+              Material: <input ref={inputRef} type='number' 
+              placeholder="0123456789" className='searcher' min="0"></input>
               <button className="verify" onClick={handleClick}>Verificar</button>
 
             </div>
