@@ -1,4 +1,4 @@
-import "./table.scss";
+import "./logTable.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,13 +9,10 @@ import Paper from "@mui/material/Paper";
 import axios from 'axios';
 import { Component } from "react";
 
-const url = 'http://127.0.0.1:8000/api/material';
-//<span className={`status ${row.status}`} id={`${row.status}`}>{row.status}</span>
+const url = 'http://127.0.0.1:8000/api/orderLogs';
 
-class List extends Component {
+class LogTable extends Component {
 
-
-  
   state = {
     data:[]
   }
@@ -37,23 +34,24 @@ class List extends Component {
     const contain = this.state.data.map(item => {
       const container = {};
     
-      container.id = item.id_material;
-      container.product = item.name;
-      container.quantity = item.pieces;
-      container.status = 'Pendiente';
+      container.id = item.id;
+      container.date = item.date;
+      container.origin = item.origin;
+      container.message = item.message;
+      container.orderNum = item.OrderNum
     
       return container;
     })
 
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer component={Paper} className="logTable">
+      <Table sx={{ minWidth: 650 }} aria-label="simple logTable">
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">ID</TableCell>
-            <TableCell className="tableCell">Material</TableCell>
-            <TableCell className="tableCell">Piezas</TableCell>
-            <TableCell className="tableCell">Estado</TableCell>
+            <TableCell className="tableCell">Fecha</TableCell>
+            <TableCell className="tableCell">Origen</TableCell>
+            <TableCell className="tableCell">Mensaje</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,11 +61,12 @@ class List extends Component {
           {contain.map((row) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
-              <TableCell className="tableCell">{row.product}</TableCell>
-              <TableCell className="tableCell">{row.quantity}</TableCell>
+              <TableCell className="tableCell">{row.date}</TableCell>
+              <TableCell className="tableCell">{row.origin}</TableCell>
               <TableCell className="tableCell">
-                <span id={row.id} className={'status ' + row.status + ' ' + row.id}> {row.status} </span>
+              {row.message} - <span className={'status Verificado'}> {row.orderNum} </span>
               </TableCell>
+
             </TableRow>
           ))}
         </TableBody>
@@ -77,4 +76,4 @@ class List extends Component {
 }
 };
 
-export default List;
+export default LogTable;

@@ -9,24 +9,46 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import axios from "axios";
+import { Component } from "react";
 
-const data = [
-  { name: "Estación A", pieces: 500 },
-  { name: "Estación B", pieces: 300 },
-  { name: "Estación C", pieces: 100 },
-  { name: "Estación D", pieces: 714 },
-  { name: "Estación E", pieces: 205 },
-];
+const url = 'http://127.0.0.1:8000/api/order';
 
-const Chart = ({ aspect, title }) => {
+class Chart extends Component {
+
+  state = {
+    data:[]
+  }
+  
+  getRequest = () => {
+    axios.get(url)
+    .then(response => { 
+      console.log(response); 
+      this.setState({data: response.data})
+    } )
+  }
+  
+  componentDidMount(){
+    this.getRequest();
+  }
+
+  render()
+  {
   return (
     <div className="chart">
-      <div className="title">{title}</div>
-      <ResponsiveContainer width="100%" aspect={aspect}>
+      <div className="title">Scrap por orden</div>
+      <ResponsiveContainer width="100%" aspect={5 / 1}>
         <BarChart
         width={500}
         height={300}
-        data={data}
+        data={this.state.data.map(item => {
+          const container = {};
+        
+          container.name = 'Orden #' + item.id;
+          container.Piezas = item.scrap
+        
+          return container;
+        })}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         barSize={20}
       >
@@ -35,11 +57,12 @@ const Chart = ({ aspect, title }) => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="pieces" fill="#8884d8" background={{ fill: "#eee" }} />
+        <Bar dataKey="Piezas" fill="#8884d8" background={{ fill: "#eee" }} />
       </BarChart>
     </ResponsiveContainer>
     </div>
   );
 };
+}
 
 export default Chart;

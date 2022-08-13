@@ -21,7 +21,7 @@ const Paso3 = () => {
           <div>
             <h1 className="title">Set Up - Equipment/Tooling</h1>
             <Setup />
-            <div className="link-position">
+            <div id="linkPosition" className="link-position">
               <Link to="/produccion/paso4" className="link position">
                 SIGUIENTE
               </Link>

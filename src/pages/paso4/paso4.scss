@@ -138,17 +138,6 @@
   justify-content: end;
   margin-top: 20px;
 }
-
-.resumeInitialPieces,
-.resumeGoodPieces,
-.resumeScrap {
-  text-align: center;
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-.resumeInitialPieces,
-.resumeGoodPieces {
-  margin-left: 80px;
+#linkPosition {
+  display: none;
 }

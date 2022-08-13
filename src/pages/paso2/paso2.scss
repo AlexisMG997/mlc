@@ -85,7 +85,6 @@
 .dotProgress2 {
   color: rgba(189, 189, 3, 0.75);
 }
-
 .container {
   margin-top: 15px;
   margin-bottom: 30px;
@@ -129,10 +128,17 @@
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  margin: 50px;
 }
 
-.link-position {
-  display: flex;
-  justify-content: end;
-  margin-top: 20px;
+#linker {
+  display: none;
+  width: fit-content;
+  margin-top: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

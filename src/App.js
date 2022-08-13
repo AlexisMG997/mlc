@@ -1,5 +1,5 @@
 import Dashboard from "./pages/dashboard/Dashboard";
-import Paso0 from "./pages/paso0/Paso0";
+import Logs from "./pages/logs/Logs";
 import Paso1 from "./pages/paso1/Paso1";
 import Paso2 from "./pages/paso2/Paso2";
 import Paso3 from "./pages/paso3/Paso3";
@@ -14,9 +14,9 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Dashboard />} />
+            <Route path="Logs" index element={<Logs />} />
 
             <Route path="produccion">
-              <Route index element={<Paso0 />} />
               <Route path="paso1" element={<Paso1 />} />
               <Route path="paso2" element={<Paso2 />} />
               <Route path="paso3" element={<Paso3 />} />

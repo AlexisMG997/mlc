@@ -1,8 +1,8 @@
-import "./widget.scss";
+import "./widgetScrap.scss";
 import axios from 'axios';
 import { Component } from "react";
 
-const url = 'http://127.0.0.1:8000/api/GoodUnitsTotal';
+const url = 'http://127.0.0.1:8000/api/scrapTotal';
 class Widget extends Component {
 
   state = {
@@ -25,14 +25,12 @@ class Widget extends Component {
         return (
           <div className="widget">
             <div className="left">
-              <span className="title">PIEZAS PRODUCIDAS DEL PLAN DE PRODUCCIÓN</span>
+              <span className="title">SCRAP RESULTANTE DEL PLAN DE PRODUCCIÓN</span>
               <span className="counter">
-              {
-                  this.state.data.map(item => {  
-                    return item.goodUnitsTotal
-                })
-
-
+                {
+                    this.state.data.map(item => {  
+                      return item.scrapTotal
+                  })
                 }
               </span>
             </div>

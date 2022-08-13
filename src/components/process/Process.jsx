@@ -1,45 +1,138 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./process.scss";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 const Process = () => {
-  const endPointOrder = [
-    {
-      initialQuantity: 10,
-      goodPieces: 0,
-      scrapPieces: 1,
-    },
-  ];
+  const [data, setData] = useState([]);
 
-  const [goodPiece, setGoodPiece] = useState(
-    endPointOrder.map((endPointGoodPiece) => {
-      return endPointGoodPiece.goodPieces;
-    })
-  );
-  const [scrapPiece, setScrapPiece] = useState(
-    endPointOrder.map((endPointScrapPiece) => {
-      return endPointScrapPiece.scrapPieces;
-    })
-  );
+  const getData = async () => {
+    const { data } = await axios.get("http://localhost:8000/api/order/1");
+    setData(data);
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // const endPointOrder = [
+  //   {
+  //     initialQuantity: 10,
+  //     goodPieces: 0,
+  //     scrapPieces: 1,
+  //   },
+  // ];
+
+  const [goodPieces, setGoodPieces] = useState(0);
+
+  const [scrapPieces, setScrapPieces] = useState(0);
+
+  function init() {
+    console.log(goodPieces);
+    console.log(scrapPieces);
+    axios
+      .put("http://localhost:8000/api/order/1?", {
+        goodUnits: 0,
+        scrap: 0,
+      })
+      .then((response) => {
+        setData(response.data);
+      });
+  }
+
+  function incrementPieces() {
+    if (
+      parseInt(goodPieces) + parseInt(scrapPieces) + 1 ==
+      data.map((dat) => dat.quantity)
+    ) {
+      console.log(goodPieces);
+      setGoodPieces(parseInt(goodPieces) + 1);
+      var buttonScrap = document.getElementById("incrementScrap");
+      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      var buttonPut = document.getElementById("piecesPut");
+      buttonScrap.setAttribute("disabled", "true");
+      buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonScrap.style.pointerEvents = "none";
+      buttonGoodPiece.setAttribute("disabled", "true");
+      buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.style.pointerEvents = "none";
+      buttonPut.style.display = "inherit";
+    } else {
+      setGoodPieces(parseInt(goodPieces) + 1);
+    }
+  }
+
+  function incrementScrap() {
+    if (
+      parseInt(goodPieces) + parseInt(scrapPieces) + 1 ==
+      data.map((dat) => parseInt(dat.quantity))
+    ) {
+      console.log(scrapPieces);
+      setScrapPieces(parseInt(scrapPieces) + 1);
+      var buttonScrap = document.getElementById("incrementScrap");
+      var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+      var buttonPut = document.getElementById("piecesPut");
+      buttonScrap.setAttribute("disabled", "true");
+      buttonScrap.style.backgroundColor = "#d3d3d3";
+      buttonScrap.style.pointerEvents = "none";
+      buttonGoodPiece.setAttribute("disabled", "true");
+      buttonGoodPiece.style.backgroundColor = "#d3d3d3";
+      buttonGoodPiece.style.pointerEvents = "none";
+      buttonPut.style.display = "inherit";
+    } else {
+      setScrapPieces(parseInt(scrapPieces) + 1);
+    }
+  }
+  function updateQuantities() {
+    axios.put("http://localhost:8000/api/order/1?", {
+      goodUnits: goodPieces,
+      scrap: scrapPieces,
+    });
+    document.getElementById("linkPosition").style.display = "flex";
+    var buttonPut = document.getElementById("piecesPut");
+    buttonPut.style.display = "none";
+  }
+
+  function changeWindow() {
+    window.location.href = "/produccion/paso5";
+  }
+  // function blockFunction() {
+  //   if (
+  //     parseInt(goodPieces) + parseInt(scrapPieces) ===
+  //     data.map((dat) => parseInt(dat.quantity))
+  //   ) {
+  //     console.log(goodPieces);
+  //     var buttonScrap = document.getElementById("incrementScrap");
+  //     var buttonGoodPiece = document.getElementById("incrementGoodPiece");
+  //     var buttonPut = document.getElementById("piecesPut");
+  //     buttonScrap.setAttribute("disabled", "true");
+  //     buttonGoodPiece.setAttribute("disabled", "true");
+
+  //   }
+  // }
   // const [goodPiece, setGoodPiece] = useState(1);
   // const [scrapPiece, setScrapPiece] = useState(0);
 
   return (
     <>
+      {/* <div>{JSON.stringify(data)}</div> */}
+      {/* {init} */}
       <div className="container">
         <div className="processIncrement">
           <div className="operationTitle">
-            <h2>Good Piece</h2>
+            <h2>Piezas buenas</h2>
           </div>
           <div className="incrementOperation">
             <button
+              id="incrementGoodPiece"
               className="incrementGoodPiece"
-              onClick={() => setGoodPiece(parseInt(goodPiece) + 3)}
+              onClick={incrementPieces}
             >
-              <CheckIcon />
+              <CheckIcon disabled="true" fontSize="large" />
             </button>
-            <p className="operationPiece">{goodPiece}</p>
+            <p className="operationPiece">{goodPieces}</p>
           </div>
         </div>
         <div className="processDecrement">
@@ -48,21 +141,32 @@ const Process = () => {
           </div>
           <div className="incrementOperation">
             <button
+              id="incrementScrap"
               className="incrementScrap"
-              onClick={() => setScrapPiece(parseInt(scrapPiece) + 1)}
+              onClick={incrementScrap}
             >
-              <CloseIcon />
+              <CloseIcon disabled="true" fontSize="large" />
             </button>
-            <p className="operationPiece">{scrapPiece}</p>
+            <p className="operationPiece">{scrapPieces}</p>
           </div>
         </div>
         <div className="processedPiece">
+          <>
+            <h2>Piezas Producidas</h2>
+          </>
           <p>
-            {parseInt(goodPiece) + parseInt(scrapPiece)} -
-            {endPointOrder.map((endPointOrd) => {
-              return endPointOrd.initialQuantity;
+            {parseInt(goodPieces) + parseInt(scrapPieces)} -
+            {data.map((dat) => {
+              return dat.quantity;
             })}
           </p>
+          <button
+            id="piecesPut"
+            className="piecesPut"
+            onClick={updateQuantities}
+          >
+            Finalizar Orden
+          </button>
         </div>
       </div>
     </>

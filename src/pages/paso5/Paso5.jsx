@@ -10,19 +10,19 @@ const Paso5 = () => {
       <div className="paso2Container">
         <Navbar />
         <div className="top">
-          <h1>Resume</h1>
+          <h1>Resumen</h1>
           <CircleIcon className="dotComplete2" />
           <CircleIcon className="dotComplete" />
           <CircleIcon className="dotComplete" />
+          <CircleIcon className="dotComplete" />
           <CircleIcon className="dotProgress2" />
-          <CircleIcon className="dot" />
         </div>
         <div className="bottom">
           <div>
             <Resume />
             <div className="link-position">
-              <Link to="/produccion/paso3" className="link position">
-                FINISH
+              <Link to="/" className="link position">
+                FINALIZAR
               </Link>
             </div>
           </div>
