@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer("status");
             $table->datetime("initialDate")->nullable();
             $table->datetime("finalDate")->nullable();
             $table->integer("quantity")->nullable();

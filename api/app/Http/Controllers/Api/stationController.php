@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\station;
+use Illuminate\Support\Facades\DB;
+
 class stationController extends Controller
 {
    
@@ -13,32 +15,25 @@ class stationController extends Controller
         $station = station::all();
         return $station;
     }
-
-    
-    public function store(Request $request)
-    {
-        //
-    }
-
     
     public function show($id)
     {
-        $station = station::with('instruction')->where('id', $id)->get();
-        return $station;
+        $check = DB::table('stations')
+        ->where('id', $id)
+        ->get();
+        
+        if ($check == "[]"){ 
+            $response["status"] = 202;
+            $response["msg"] = "La estación no existe";      
+            return response()->json($response);
+        }else{
 
-        $instruction = station::find($id)->instruction;
-        return $instruction;
+            $station = station::with('instruction')->where('id', $id)->get();
+            return $station;
+            $instruction = station::find($id)->instruction;
+            return $instruction;
+        }
     }
 
-   
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    
-    public function destroy($id)
-    {
-        //
-    }
 }

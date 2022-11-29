@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\material;
+use Illuminate\Support\Facades\DB;
 
 class materialController extends Controller
 {

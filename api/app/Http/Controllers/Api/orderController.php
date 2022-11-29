@@ -7,6 +7,7 @@ use App\Models\order;
 use App\Models\modelDefault;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\orderLog;
 
 class orderController extends Controller
 {
@@ -42,11 +43,20 @@ class orderController extends Controller
 
     public function show($id)
     {
-        $order = order::with('modelDefault')->where('id', $id)->get();
-        return $order;
-
-        $model = order::find($id)->modelDefault;
-        return $model;
+        $check = DB::table('orders')
+        ->where('id', $id)
+        ->get();
+        
+        if ($check == "[]"){ 
+            $response["status"] = 202;
+            $response["msg"] = "La orden no existe";      
+            return response()->json($response);
+        }else{
+            $order = order::with('modelDefault')->where('id', $id)->get();
+            $model = order::find($id)->modelDefault;
+            return $order;
+            return $model;
+        }
     }
 
     public function update(Request $request, $id)
@@ -56,15 +66,13 @@ class orderController extends Controller
         $order->scrap = $request->scrap;
         
         $order->save();
-        $orderLog = [
-            'date' => now(),
-            'origin' => 'local.order',
-            'message' => 'Se ha actualizado la orden número',
-            'orderNum' => $id
-        ];
-        DB::table('orderLogs')->insert($orderLog);
         return $order;
-        
+    }
+
+    public function orderLog()
+    {
+        $orderLogs = orderLog::all();
+        return $orderLogs;
     }
 
 }

@@ -12,5 +12,4 @@ class orderLog extends Model
     protected $table = 'orderlogs';
 
     protected $primaryKey = 'id';
-
 }
