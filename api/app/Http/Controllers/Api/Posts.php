@@ -247,4 +247,46 @@ class Posts extends Controller
             return response()->json($response);
     }
 
+    public function GetOrderbyMonth(Request $request){
+        if (preg_match('/^[0-9]*$/', $request->month)){
+    
+            $check = DB::select("
+            Select * from orders where initialDate = '2022-".$request->month."-27 00:00:00';"
+            );
+            if (!$check == "[]"){
+                $response["status"] = 202;
+                $response["msg"] = "No existe una orden en ese mes";
+            }else{
+                $response = $check;
+            }
+        }else{
+            $response["status"] = 202;
+            $response["msg"] = "El campo month debe ser un numero entre el 1 al 12";
+        }
+        return response()->json($response);
+    }
+    
+    public function GetOrderbyDay(Request $request){
+        if (preg_match('/^[0-9]*$/', $request->month)){
+            if (preg_match('/^[0-9]*$/', $request->day)){
+                    $check = DB::select("
+                    Select * from orders where initialDate = '2022-".$request->month."-".$request->day." 00:00:00';"
+                    );
+                    if (!$check == "[]"){
+                    $response["status"] = 202;
+                    $response["msg"] = "No existe una orden en ese mes o dia";
+                    }else{
+                    $response = $check;
+                }
+            }else{
+                $response["status"] = 202;
+                $response["msg"] = "El campo day debe ser un numero entre el 1 al 31";
+            }
+            
+        }else{
+            $response["status"] = 202;
+            $response["msg"] = "El campo month debe ser un numero entre el 1 al 12";
+        }
+        return response()->json($response);
+    }
 }

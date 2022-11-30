@@ -42,6 +42,8 @@ Route::controller(Posts::class)->group(function () {
     Route::post('/PieceWithoutdefect', 'PieceWithoutdefect');
     Route::post('/PieceWithdefect', 'PieceWithdefect');
     Route::post('/UpdateOrder/{id}', 'UpdateOrder');
+    Route::post('/GetOrderbyMonth', 'GetOrderbyMonth');
+    Route::post('/GetOrderbyDay', 'GetOrderbyDay');
 });
 
 
