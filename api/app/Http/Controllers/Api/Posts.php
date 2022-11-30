@@ -201,5 +201,50 @@ class Posts extends Controller
         }
         return response()->json($response);
     }
+    public function UpdateOrder(Request $request, $id){
+
+            if(preg_match("/^[0-3]{1}$/", $request->status)){
+                if (preg_match('/^[0-9]*$/', $request->goodUnits)){
+                    if (preg_match('/^[0-9]*$/', $request->scrap)){
+
+                        $check = DB::table('orders')
+                        ->where('id', $id)
+                        ->get();
+
+                        if ($check == "[]"){
+                            $response["status"] = 202;
+                            $response["msg"] = "La orden no existe";
+                        }else{
+                           
+                            //return $quantity;
+                            if($check[0]->quantity < ($request->goodUnits+$request->scrap)){
+                                $response["status"] = 202;
+                                $response["msg"] = "GoodUnits y scrap no deben ser mayores a quantity";
+                            }else{
+                                DB::statement("
+                                UPDATE orders
+                                SET goodUnits= ".$request->goodUnits.", scrap = ".$request->scrap.", status = ".$request->status."
+                                WHERE id =".$id."; "
+                                );
+                                $response["status"] = 200;
+                                $response["msg"] = "Se ha actualizado la orden";
+                            }
+                        }
+                        
+                    }else{
+                        $response["status"] = 202;
+                        $response["msg"] = "Scrap debe ser un numero";
+                    }
+                }
+                else{
+                    $response["status"] = 202;
+                    $response["msg"] = "GoodUnits debe ser un numero";
+                }
+            }else{
+                $response["status"] = 202;
+                $response["msg"] = "El numero status debe ser del 1 al 3";
+            }
+            return response()->json($response);
+    }
 
 }
