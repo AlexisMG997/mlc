@@ -3,7 +3,9 @@
 Follow these command inside the proyect. You must use command prompt, not Powershell
 
 > mkdir FlaskMLC
+
 > cd FlaskMLC
+
 > py -3 -m mlc mlc
 
 ## Activate environment *
@@ -11,7 +13,9 @@ Follow these command inside the proyect. You must use command prompt, not Powers
 > mlc\Scripts\activate
 Or using this sequence
 > cd mlc
+
 > cd Scripts
+
 > activate
 
 ## And finally, execute this command
