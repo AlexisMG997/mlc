@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    rest = [ 1, 15, 30 ]
+    rest = [ 5, 10, 15 ]
     status = [ 1, 2, 3 ]
     orderId = getLastOrder()
     goodUnits = 0
@@ -15,7 +15,7 @@ def index():
         orderId += 1
         datetimer = datetime.now()
         datetime_formatted = datetimer.strftime("%Y-%m-%d %H:%M:%S")
-        randQuantity = random.randint(5,15)
+        randQuantity = random.randint(250,500)
         
         postInsertOrder(datetime_formatted, randQuantity, goodUnits, scrap, status[0])
 
@@ -25,31 +25,31 @@ def index():
                 case 1:
                     goodUnits += 1
                     postUpdateOrder(goodUnits, scrap, status[1], orderId)
-                    time.sleep(rest[0])
-                    print('Good')
-                    print("GP >" + str(goodUnits) + ", S > " + str(scrap))
+                    time.sleep(rest[1])
+                    #print('Good')
+                    print("Good Pieces =" + str(goodUnits) + ", Scrap = " + str(scrap))
                 case 2:
                     scrap += 1
                     postUpdateOrder(goodUnits, scrap, status[1], orderId)
-                    time.sleep(rest[0])
-                    print('Bad')
-                    print("GP >" + str(goodUnits) + ", S > " + str(scrap))
+                    time.sleep(rest[1])
+                    #print('Bad')
+                    print("Good Pieces =" + str(goodUnits) + ", Scrap = " + str(scrap))
                 case 3:
                     goodUnits += 1
                     postUpdateOrder(goodUnits, scrap, status[1], orderId)
-                    time.sleep(rest[0])
-                    print('Good')
-                    print("GP >" + str(goodUnits) + ", S > " + str(scrap))
+                    time.sleep(rest[2])
+                    #print('Good')
+                    print("Good Pieces =" + str(goodUnits) + ", Scrap = " + str(scrap))
                 case 4:
                     scrap += 1
                     postUpdateOrder(goodUnits, scrap, status[1], orderId)
-                    time.sleep(rest[0])
-                    print('Bad')
-                    print("GP >" + str(goodUnits) + ", S > " + str(scrap))
+                    time.sleep(rest[2])
+                    #print('Bad')
+                    print("Good Pieces =" + str(goodUnits) + ", Scrap = " + str(scrap))
                 case _:
-                    print('Nothing')
+                    #print('Nothing')
                     time.sleep(rest[0])
-                    print("GP >" + str(goodUnits) + ", S > " + str(scrap))
+                    print("Good Pieces =" + str(goodUnits) + ", Scrap = " + str(scrap))
 
         postUpdateOrder(goodUnits, scrap, status[2], orderId)
         print("stop")
