@@ -49,6 +49,34 @@ const Setup = () => {
   //     ],
   //   },
   // ];
+
+  function validate() {
+    var input = document.getElementById("parameterValue");
+    var inputValue = document.getElementById("parameterValue").value;
+    console.log(inputValue);
+    if (
+      inputValue >=
+      data.map((dat) =>
+        dat.parameters.map((parameter) => parameter.valueMinimum)
+      )
+    ) {
+      if (
+        inputValue <=
+        data.map((dat) =>
+          dat.parameters.map((parameter) => parameter.valueMaximum)
+        )
+      ) {
+        input.setAttribute("readonly", "readonly");
+        console.log("We are in");
+        var verify = document.getElementById("verify");
+        verify.style.backgroundColor = "green";
+        verify.innerHTML = "Verificado";
+        document.getElementById("linkPosition").style.display = "flex";
+      }
+    } else {
+      console.log("X");
+    }
+  }
   return (
     <>
       {/* <div>{JSON.stringify(data)}</div> */}
@@ -67,11 +95,16 @@ const Setup = () => {
                     {parameter.unitOfMeasure}
                     <div className="controls">
                       <input
-                        type="text"
+                        id="parameterValue"
+                        type="number"
                         className="parameter"
+                        min={parameter.valueMinimum}
+                        max={parameter.valueMaximum}
                         required="true"
                       />
-                      <button className="verify">Verificar</button>
+                      <button id="verify" className="verify" onClick={validate}>
+                        Verificar
+                      </button>
                     </div>
                   </p>
                 </div>

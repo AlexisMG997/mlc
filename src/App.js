@@ -17,7 +17,7 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/">
-              <Route index element={<Dashboard />} />
+              <Route index element={<ControlPanel />} />
               <Route path="controlPanel" index element={<ControlPanel />} />
               <Route path="Logs" index element={<Logs />} />
 

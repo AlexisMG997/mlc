@@ -28,7 +28,7 @@ const Resume = () => {
         <div className="container" key={index}>
           <div className="resumeScrap">
             <div className="titleScrap">
-              <h2>Bad Pieces</h2>
+              <h2>Scrap</h2>
             </div>
             <div className="scrapQuantity">
               <p>
@@ -39,7 +39,7 @@ const Resume = () => {
           </div>
           <div className="resumeInitialPieces">
             <div className="titleInitialPieces">
-              <h2>Initial Pieces</h2>
+              <h2>Piezas iniciales</h2>
             </div>
             <div className="initialPiecesQuantity">
               <p>{dat.quantity}</p>
@@ -47,7 +47,7 @@ const Resume = () => {
           </div>
           <div className="resumeGoodPieces">
             <div className="titleGoodPieces">
-              <h2>Good Pieces</h2>
+              <h2>Piezas buenas</h2>
             </div>
             <div className="goodPiecesQuantity">
               <p>{dat.goodUnits}</p>

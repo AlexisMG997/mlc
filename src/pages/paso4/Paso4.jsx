@@ -10,7 +10,7 @@ const Paso4 = () => {
       <div className="paso2Container">
         <Navbar />
         <div className="top">
-          <h1>Process</h1>
+          <h1>Procedimiento</h1>
           <CircleIcon className="dotComplete2" />
           <CircleIcon className="dotComplete" />
           <CircleIcon className="dotComplete" />
@@ -20,12 +20,8 @@ const Paso4 = () => {
         <div className="bottom">
           <div>
             <Process />
-            <div className="link-position">
-              <Link
-                id="paso4Link"
-                to="/produccion/paso5"
-                className="link position"
-              >
+            <div id="linkPosition" className="link-position">
+              <Link to="/produccion/paso5" className="link position">
                 SIGUIENTE
               </Link>
             </div>

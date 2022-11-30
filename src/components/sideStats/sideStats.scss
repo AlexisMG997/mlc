@@ -1,8 +1,15 @@
 .date,
 .goodPiecesCount,
 .badPiecesCount {
-  background-color: black;
-  box-shadow: 2px 4px 10px 1px rgb(201 201 201 / 47%);
-  padding: 10px;
-  color: gray;
+  -webkit-box-shadow: 4px 4px 10px 1px rgba(1, 0, 0, 1);
+  box-shadow: 4px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  border-radius: 10px;
+  color: black;
+  font-family: sans-serif;
+}
+
+.textBadPiecesCount > p,
+.textGoodPiecesCount > p {
+  font-family: "Open Sans";
+  font-size: 48px;
 }

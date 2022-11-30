@@ -6,7 +6,9 @@
   font-size: 48px;
   color: white;
   background-color: #101d56;
-  font-family: "Montserrat", sans-serif;
+  .logo {
+    font-family: "Montserrat";
+  }
 
   .wrapper {
     width: 100%;
