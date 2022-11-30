@@ -20,6 +20,10 @@ Or using this sequence:
 
 > activate
 
+# Before continue, at this point the command bash must look like this:
+
+> (mlc) C:\Users...
+
 ## And finally, execute this command
 
 > pip install Flask
