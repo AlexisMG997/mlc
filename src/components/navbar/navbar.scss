@@ -3,8 +3,10 @@
   border-bottom: 0.5px solid rgb(231, 228, 228);
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #555;
+  font-size: 48px;
+  color: white;
+  background-color: #101d56;
+  font-family: "Montserrat", sans-serif;
 
   .wrapper {
     width: 100%;
@@ -16,7 +18,6 @@
     .search {
       display: flex;
       align-items: center;
-      border: 0.5px solid lightgray;
       padding: 3px;
 
       input {
@@ -41,7 +42,7 @@
         position: relative;
 
         .icon {
-          font-size: 20px;
+          font-size: 200px;
         }
 
         .avatar {
@@ -68,8 +69,8 @@
       }
     }
   }
-}
-
-#logos {
-  font-size: 25px;
+  @font-face {
+    font-family: "Montserrat-Bold";
+    src: url("../../assets/Montserrat/Montserrat-Bold.ttf") format("truetype");
+  }
 }

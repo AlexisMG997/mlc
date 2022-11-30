@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .paso1 {
   width: 100%;
   display: flex;
@@ -14,7 +18,7 @@
       display: flex;
 
       h1 {
-        color: rgba(17, 17, 17, 0.750);
+        color: rgba(17, 17, 17, 0.75);
         font-size: 20px;
       }
 
@@ -82,26 +86,26 @@
 }
 
 .dotComplete {
-  color: rgba(0, 128, 0, 0.750);
+  color: rgba(0, 128, 0, 0.75);
 }
 .dot {
-  color: rgba(16, 16, 16, 0.750);
+  color: rgba(16, 16, 16, 0.75);
 }
 .dotProgress {
   margin-left: 800px;
   color: rgba(189, 189, 3, 0.75);
 }
 
-.verify-step{
+.verify-step {
   margin-right: 50px;
 }
 
-.container{
+.container {
   margin-top: 15px;
   margin-bottom: 30px;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: green;
   font-size: 16px;
@@ -111,4 +115,3 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
