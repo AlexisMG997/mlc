@@ -12,7 +12,7 @@ Follow these command inside the proyect. You must use command prompt, not Powers
 
 > mlc\Scripts\activate
 
-Or using this sequence
+Or using this sequence:
 
 > cd mlc
 
