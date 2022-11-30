@@ -11,7 +11,9 @@ Follow these command inside the proyect. You must use command prompt, not Powers
 ## Activate environment *
 
 > mlc\Scripts\activate
+
 Or using this sequence
+
 > cd mlc
 
 > cd Scripts
