@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# P.D: para que funcione, se requiere instalar las librerías necesarias para React, Flask y Laravel, a su vez que se requiere WAMPP y las BD (Se obtienen usando Larvel [php artisan migrate:fresh) para que el proyecto funcione
+
+#Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
