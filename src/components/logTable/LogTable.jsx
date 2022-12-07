@@ -52,6 +52,7 @@ class LogTable extends Component {
             <TableCell className="tableCell">Fecha</TableCell>
             <TableCell className="tableCell">Origen</TableCell>
             <TableCell className="tableCell">Mensaje</TableCell>
+            <TableCell className="tableCell">No. Orden</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,10 +64,10 @@ class LogTable extends Component {
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.date}</TableCell>
               <TableCell className="tableCell">{row.origin}</TableCell>
+              <TableCell className="tableCell">{row.message}</TableCell>
               <TableCell className="tableCell">
-              {row.message} - <span className={'status Verificado'}> {row.orderNum} </span>
+                <span className={'status Verificado'}> {row.orderNum} </span>
               </TableCell>
-
             </TableRow>
           ))}
         </TableBody>

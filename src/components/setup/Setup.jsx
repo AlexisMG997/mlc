@@ -102,11 +102,7 @@ const Setup = () => {
                         max={parameter.valueMaximum}
                         required="true"
                       />
-                      <button
-                        id="verify"
-                        className="verify2"
-                        onClick={validate}
-                      >
+                      <button id="verify" className="verify" onClick={validate}>
                         Verificar
                       </button>
                     </div>
